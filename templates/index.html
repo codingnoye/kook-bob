@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+<head>
 <style>
     html {
-        font-size: 27px;
+        font-size: 30px;
     }
     body {
         background-color: #f0f0f0;
@@ -16,8 +17,8 @@
         padding: 1rem 0;
         margin: 3rem auto;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        width: 80%;
-        max-width: 30rem;
+        width: 100%;
+        max-width: 25rem;
     }
     .cafeteria>.name {
         font-size: 1.8rem;
@@ -44,6 +45,8 @@
         word-break: keep-all;
     }
 </style>
+</head>
+
 <body>
     {% for cafeteria in data %}
         <div class="cafeteria">
