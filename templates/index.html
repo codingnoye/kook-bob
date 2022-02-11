@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<style>
+    html {
+        font-size: 27px;
+    }
+    body {
+        background-color: #f0f0f0;
+        font-size: 1rem;
+        text-align: center;
+    }
+    .cafeteria {
+        display: block;
+        border-radius: 1rem;
+        background-color: #ececec;
+        padding: 1rem 0;
+        margin: 3rem auto;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 80%;
+        max-width: 30rem;
+    }
+    .cafeteria>.name {
+        font-size: 1.8rem;
+        color: #111;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        padding: .2rem 2rem 0;
+    }
+    .corner {
+        display: none;
+    }
+    .block {
+        background-color: #ffffff;
+        border-top: 1px solid #ccc;
+        padding: 1rem 2rem;
+    }
+    .block:last-child {
+        border-bottom: 1px solid #ccc;
+    }
+    .block>.line {
+        font-size: 1.4rem;
+        font-weight: 500;
+        padding: .2rem 0;
+        word-break: keep-all;
+    }
+</style>
+<body>
+    {% for cafeteria in data %}
+        <div class="cafeteria">
+            <div class="name">{{cafeteria['name']}}</div>
+            {% for corner in cafeteria['corners'] %}
+                <div class="corner">착한아침</div>
+                {% for block in corner['blocks'] %}
+                    <div class="block">
+                        {% for line in block %}
+                            <div class="line">{{line}}</div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</body>
+</html>

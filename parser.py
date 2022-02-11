@@ -1,14 +1,15 @@
 import requests
 from ast import literal_eval
 import re
+import json
 
 def get_menu(today):
     res = requests.get(f'https://kmucoop.kookmin.ac.kr/menu/menujson.php?sdate={today}&edate={today}&today={today}')
     text = res.text.replace('\\r\\n', '\\n').replace('<br>', ' - ').replace('\\\\', '\\n').replace('\\n\\n', '\\n').replace('<sup>', '').replace('<\\/sup>', '')
-    data = literal_eval(text)
+    data = json.loads(text)
     price_pattern = re.compile('[0-9,]+')
 
-    parsed = {}
+    parsed = []
 
     for cafeteria_name, day in data.items():
         if not day: continue
@@ -32,6 +33,6 @@ def get_menu(today):
 
             corner['blocks'] = blocks
             cafeteria['corners'].append(corner)
-        parsed[cafeteria_name] = cafeteria
-    
+        if len(cafeteria['corners']) == 0: continue
+        parsed.append(cafeteria)
     return parsed
