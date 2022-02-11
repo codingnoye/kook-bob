@@ -4,8 +4,7 @@ import parser
 import json
 
 def get_today():
-    return "2021-02-09"
-    # return dt.date.today().strftime("%Y-%m-%d")
+    return dt.date.today().strftime("%Y-%m-%d")
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
